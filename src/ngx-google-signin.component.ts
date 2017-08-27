@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, AfterViewInit, ViewChild} from '@angular/core';
-import {GoogleSignInProviderService} from "../services/ngx-google-sign-in.service";
+import {GoogleSignInProviderService} from "./ngx-google-sign-in.service";
 
 @Component({
   selector: 'ngx-google-sign-in',

@@ -11,6 +11,10 @@
     "build": "webpack",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "repository" :{
+	"type" : "git",
+	"url" : "https://github.com/karbonn/ngx-google-signin.git"
+  },
   "keywords": [
     "angular",
     "angular 2"

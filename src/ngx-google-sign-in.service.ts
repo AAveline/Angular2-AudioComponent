@@ -2,15 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs/Rx'
 
 declare const window: any;
-/**
- * Choses a faire:
- * Exposer les methodes suivantes:
- * - Une methode qui retourne le googleUser (.get())
- * - Une methode qui retourne le googleAuth object
- * - Faire deux subjects qui exposent les deux objets precedement cités.
- * - Faire un component qui wrap le google sign et qui expose les methodes essentielles via des output, et qui prend
- * en input des styles, des clés (init etc)
- */
+
 @Injectable()
 export class GoogleSignInProviderService {
   public apiKey: string;
@@ -23,7 +15,7 @@ export class GoogleSignInProviderService {
    * Init OAuth2 with provided Google's ApiKey.
    * @param key
      */
-  public init(key: string) {
+  public init(key: string): void {
     this.apiKey = key;
     const that = this;
     this.window.gapi.load('auth2', function() {
@@ -54,7 +46,7 @@ export class GoogleSignInProviderService {
   /**
    * Dispatch the google user across the application.
    */
-  public dispatchGoogleUser(): void {
+  private dispatchGoogleUser(): void {
     this.setGoogleUser(this.googleAuth.isSignedIn.get());
   }
 
@@ -64,7 +56,7 @@ export class GoogleSignInProviderService {
    * @param domElement
    * @returns {any}
      */
-  public computeGoogleSignInElement(domElement: any) {
+  public computeGoogleSignInElement(domElement: any): Observable<any> {
     const that = this;
     return Observable.create((observer: any) => {
       this.isAvailable().then(() => {
@@ -83,7 +75,7 @@ export class GoogleSignInProviderService {
    * Reload the token.
    * @returns {any}
    */
-  public reloadAuthResponse() {
+  public reloadAuthResponse(): Observable<any> {
     return Observable.create((observer: any) => {
       this.getCurrentUser().get().reloadAuthResponse().then((data: any) => observer.next(data));
     });
@@ -94,7 +86,7 @@ export class GoogleSignInProviderService {
    * @param includeAuthorizationData
    * @returns {any}
    */
-  public getAuthResponse(includeAuthorizationData?: boolean) {
+  public getAuthResponse(includeAuthorizationData?: boolean): Observable<any> {
     return Observable.create((observer: any) => {
       observer.next(this.getCurrentUser().get().getAuthResponse(includeAuthorizationData));
     });
@@ -105,7 +97,7 @@ export class GoogleSignInProviderService {
    * @param scopes
    * @returns {any}
    */
-  public hasGrantedScopes(scopes: string) {
+  public hasGrantedScopes(scopes: string): Observable<boolean> {
     return Observable.create((observer: any) => {
       observer.next(this.getCurrentUser().get().hasGrantedScopes(scopes));
     });
@@ -121,7 +113,7 @@ export class GoogleSignInProviderService {
    * Expose BasicProfile informations.
    * @returns {any}
    */
-  public getBasicProfile() {
+  public getBasicProfile(): any {
     return this.getCurrentUser().get().getBasicProfile();
   }
   public getGoogleUser() {
@@ -132,13 +124,13 @@ export class GoogleSignInProviderService {
    * Emit the current user object.
    * @param googleUser
    */
-  public setGoogleUser(googleUser: any) {
+  private setGoogleUser(googleUser: any): any {
     this.googleUser.next(this.getCurrentUser().get());
   }
   /**
    * Helpers.
    */
-  public isAvailable() {
+  private isAvailable() {
     return new Promise((resolve) => {
       this.window.gapi.load('auth2', function () {
         resolve(true);

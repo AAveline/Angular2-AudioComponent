@@ -17,8 +17,7 @@
   },
   "files": [
     "index.ts",
-    "./src/ngx-google-sign-in.service.ts",
-    "./src/ngx-google-signin.component.ts"
+    "./src/audio.component.ts"
   ],
   "exclude": [
     "node_modules",

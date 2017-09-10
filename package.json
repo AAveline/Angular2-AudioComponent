@@ -1,6 +1,6 @@
 {
-  "name": "ngx-google-sign-in",
-  "version": "1.0.4",
+  "name": "angular2-audio-component",
+  "version": "1.0.0",
   "description": "",
   "scripts": {
     "clean": "rimraf bundles coverage src/**/*.d.ts src/**/*.metadata.json src/**/*.js tests/**/*.d.ts tests/**/*.metadata.json tests/**/*.js index.d.ts index.metadata.json index.js",
@@ -13,7 +13,7 @@
   },
   "repository" :{
 	"type" : "git",
-	"url" : "https://github.com/karbonn/ngx-google-signin.git"
+	"url" : "https://github.com/karbonn/Angular2-AudioComponent.git"
   },
   "keywords": [
     "angular",

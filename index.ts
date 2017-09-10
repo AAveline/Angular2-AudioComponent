@@ -1,27 +1,17 @@
 import {NgModule} from '@angular/core';
 
-import {GoogleSignInProviderService} from './src/ngx-google-sign-in.service';
-import {NgxGoogleSignInComponent} from './src/ngx-google-signin.component';
+import {AudioComponent} from './src/audio.component';
 
-export * from './src/ngx-google-sign-in.service';
-export * from './src/ngx-google-signin.component';
+export * from './src/audio.component';
 
 @NgModule({
     declarations: [
-        NgxGoogleSignInComponent
+        AudioComponent
     ],
     exports: [
-        NgxGoogleSignInComponent
+        AudioComponent
     ]
 })
 
-export class NgxGoogleSignInModule {
-    static forRoot() {
-        return {
-            ngModule: NgxGoogleSignInModule,
-            providers: [
-                GoogleSignInProviderService
-            ]
-        }
-    }
+export class Angular2AudioComponentModule {
 }
